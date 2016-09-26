@@ -25,32 +25,15 @@
  */
 module powerbi.extensibility.visual {
     
-    // Below is a snippet of a definition for an object which will contain the property values
-    // selected by the users
-    /*interface VisualSettings {
-        lineColor: string;
-    }*/
-
-    // To allow this scenario you should first the following JSON definition to the capabilities.json file
-    // under the "objects" property:
-    // "settings": {
-    //     "displayName": "Visual Settings",
-    //     "description": "Visual Settings Tooltip",
-    //     "properties": {
-    //         "lineColor": {
-    //         "displayName": "Line Color",
-    //         "type": { "fill": { "solid": { "color": true }}}
-    //         }
-    //     }
-    // }
-
+    interface VisualSettings {
+        method: string;
+    }
 
     export class Visual implements IVisual {
         private imageDiv: HTMLDivElement;
         private imageElement: HTMLImageElement;
 
-        // Snippet for defining the member property which will hold the property pane values
-        /*private settings: VisualSettings;*/
+        private settings: VisualSettings;
 
         public constructor(options: VisualConstructorOptions) {
             this.imageDiv = document.createElement('div');
@@ -93,42 +76,27 @@ module powerbi.extensibility.visual {
             this.imageDiv.style.width = finalViewport.width + 'px';
         }
 
-        /**
-         * This function gets called by the update function above. You should read the new values of the properties into 
-         * your settings object so you can use the new value in the enumerateObjectInstances function below.
-         * 
-         * Below is a code snippet demonstrating how to expose a single property called "lineColor" from the object called "settings"
-         * This object and property should be first defined in the capabilities.json file in the objects section.
-         * In this code we get the property value from the objects (and have a default value in case the property is undefined)
-         */
         public updateObjects(objects: DataViewObjects) {
-            /*this.settings = <VisualSettings>{
-                lineColor: getFillValue(object, 'settings', 'lineColor', "#333333")
-            };*/
+            this.settings = <VisualSettings>{
+                method: getValue<string>(objects, 'settings', 'method', "circle")
+            };
         }
 
-        /** 
-         * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the 
-         * objects and properties you want to expose to the users in the property pane.
-         * 
-         * Below is a code snippet for a case where you want to expose a single property called "lineColor" from the object called "settings"
-         * This object and property should be first defined in the capabilities.json file in the objects section.
-         */
         public enumerateObjectInstances(options: EnumerateVisualObjectInstancesOptions): VisualObjectInstanceEnumeration {
             let objectName = options.objectName;
             let objectEnumeration = [];
 
-            /*switch( objectName ){
+            switch( objectName ){
                 case 'settings':
                     objectEnumeration.push({
                         objectName: objectName,
                         properties: {
-                            lineColor: this.settings.lineColor,
+                            method: this.settings.method,
                          },
                         selector: null
                     });
                     break;
-            };*/
+            };
 
             return objectEnumeration;
         }
