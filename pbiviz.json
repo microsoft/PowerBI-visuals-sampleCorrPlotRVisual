@@ -1,0 +1,24 @@
+{
+  "visual": {
+    "name": "sampleCorrPlotRVisual",
+    "displayName": "sampleCorrPlotRVisual",
+    "guid": "PBI_CV_C20CCA57_54B7_4BB6_A57D_381B530D06EC",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "",
+    "supportUrl": "",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "1.2.0",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": "dependencies.json"
+}
