@@ -24,7 +24,7 @@
  *  THE SOFTWARE.
  */
 module powerbi.extensibility.visual {
-    
+
     interface VisualSettings {
         method: string;
     }
@@ -39,7 +39,7 @@ module powerbi.extensibility.visual {
             this.imageDiv = document.createElement('div');
             this.imageDiv.className = 'rcv_autoScaleImageContainer';
             options.element.appendChild(this.imageDiv);
-            
+
             this.imageElement = document.createElement('img');
             this.imageElement.className = 'rcv_autoScaleImage';
 
@@ -86,7 +86,7 @@ module powerbi.extensibility.visual {
             let objectName = options.objectName;
             let objectEnumeration = [];
 
-            switch( objectName ){
+            switch (objectName) {
                 case 'settings':
                     objectEnumeration.push({
                         objectName: objectName,

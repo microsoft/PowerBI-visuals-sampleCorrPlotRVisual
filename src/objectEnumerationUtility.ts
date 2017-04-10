@@ -1,10 +1,10 @@
 module powerbi.extensibility.visual {
     export function getValue<T>(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: T ): T {
-        if(objects) {
+        if (objects) {
             let object = objects[objectName];
-            if(object) {
+            if (object) {
                 let property: T = <T>object[propertyName];
-                if(property !== undefined) {
+                if (property !== undefined) {
                     return property;
                 }
             }
@@ -13,11 +13,11 @@ module powerbi.extensibility.visual {
     }
 
     export function getFillValue(objects: DataViewObjects, objectName: string, propertyName: string, defaultValue: string ): string {
-        if(objects) {
+        if (objects) {
             let object = objects[objectName];
-            if(object) {
+            if (object) {
                 let fill: Fill = <Fill>object[propertyName];
-                if(fill !== undefined && fill.solid !== undefined && fill.solid.color !== undefined) {
+                if (fill !== undefined && fill.solid !== undefined && fill.solid.color !== undefined) {
                     return fill.solid.color;
                 }
             }
